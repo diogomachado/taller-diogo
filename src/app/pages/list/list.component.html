@@ -1,0 +1,38 @@
+<section class="p-10">
+    <header class="mb-6">
+        <h1 class="text-xl font-bold mb-3">List of users</h1>
+        <form [formGroup]="form">
+            <input 
+                type="text" 
+                placeholder="Search here" 
+                class="input input-bordered w-full"
+                formControlName="search"
+                />
+        </form>
+    </header>
+
+    <div class="wrapper">
+        @if (usersFiltered.length > 0) {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(user of usersFiltered; track user.id) {
+                        <tr class="user">
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }@else{
+            <div class="text-center p-4">
+                Any results found
+            </div>
+        }
+    </div>
+</section>
